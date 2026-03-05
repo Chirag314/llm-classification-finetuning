@@ -8,7 +8,7 @@ Given a **prompt** and two **anonymous model responses** (A/B), we predict the h
 ✅ **winner_model_b**  
 ✅ **winner_tie**
 
-This repo is built to feel like a real ML team codebase:
+This repo is built to feel like a ML team codebase:
 
 - Reproducible experiment configs (YAML)
 - Baseline → strong Transformer training pipeline
