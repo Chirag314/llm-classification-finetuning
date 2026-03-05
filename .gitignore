@@ -1,1 +1,9 @@
 kaggle.json
+data/
+outputs/
+*.pyc
+__pycache__/
+.env
+.kaggle/
+.vscode/
+.DS_Store

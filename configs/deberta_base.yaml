@@ -1,0 +1,25 @@
+seed: 42
+
+data_dir: data/raw
+output_dir: outputs/deberta_base
+
+model_name: microsoft/deberta-v3-base
+max_length: 384
+
+# Training
+num_folds: 5
+fold: 0
+epochs: 1
+train_batch_size: 4
+eval_batch_size: 8
+lr: 2.0e-5
+weight_decay: 0.01
+warmup_ratio: 0.06
+grad_accum_steps: 4
+label_smoothing: 0.02
+
+# Tricks
+use_swap_augmentation: true
+
+# Inference
+tta_swap: true
