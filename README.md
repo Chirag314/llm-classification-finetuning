@@ -91,14 +91,15 @@ llm-classification-finetuning/
 ├── data/raw/                      # Kaggle CSVs (downloaded here)
 └── outputs/                       # Artifacts (models, plots, submissions)
 
+```
 ---
 
 # ⚙️ Setup (GitHub Codespaces)
-1) Install dependencies
+## 1) Install dependencies
 
 pip install -r requirements.txt
 
-2) Add Kaggle credentials
+## 2) Add Kaggle credentials
 Option A (recommended): kaggle.json
 
 Kaggle → Account → Create New API Token
@@ -117,15 +118,15 @@ Option B: Environment variables (Codespace secrets)
 
 Set KAGGLE_USERNAME and KAGGLE_KEY as Codespace Secrets and restart the Codespace.
 
-🚀 Quick Start (Download → Train → Submit)
-Download data
+# 🚀 Quick Start (Download → Train → Submit)
+## Download data
 bash scripts/kaggle_download.sh
-Baseline 1: TF-IDF + Logistic Regression (fast sanity baseline)
+## Baseline 1: TF-IDF + Logistic Regression (fast sanity baseline)
 
 Creates: outputs/tfidf_lr/submission.csv and submits.
 
 bash scripts/run_tfidf.sh
-Baseline 2: DeBERTa Cross-Encoder (strong baseline)
+## Baseline 2: DeBERTa Cross-Encoder (strong baseline)
 
 Creates:
 
@@ -138,7 +139,7 @@ outputs/deberta_base/train_curve.png (training curve)
 bash scripts/run_deberta.sh
 Full pipeline (both baselines)
 bash scripts/run_all.sh
-📈 Training Curve
+# 📈 Training Curve
 
 After running the DeBERTa baseline, the training curve will be generated at:
 
@@ -146,12 +147,12 @@ outputs/deberta_base/train_curve.png
 
 GitHub will render it after you push:
 
-🧪 Baselines Included
-✅ Baseline 1 (Fast): TF-IDF + Logistic Regression
+## 🧪 Baselines Included
+### ✅ Baseline 1 (Fast): TF-IDF + Logistic Regression
 
 Purpose: validate parsing, scoring format, and submission logic quickly.
 
-✅ Baseline 2 (Strong): Transformer Cross-Encoder (DeBERTa)
+### ✅ Baseline 2 (Strong): Transformer Cross-Encoder (DeBERTa)
 
 Purpose: strong competitive baseline with:
 
@@ -161,7 +162,7 @@ swap test-time augmentation (TTA)
 
 logloss-focused training
 
-🧠 How We Improve From Here (Elite Kaggle Iteration)
+# 🧠 How We Improve From Here (Elite Kaggle Iteration)
 
 Once the pipeline runs end-to-end, typical high-signal improvements:
 
@@ -177,7 +178,7 @@ Hyperparameter tuning for logloss (max_len, smoothing, warmup, LR)
 
 Model upgrades (DeBERTa-large / RoBERTa-large) where compute allows
 
-💻 Strong Models: Desktop Training → Kaggle Inference
+# 💻 Strong Models: Desktop Training → Kaggle Inference
 
 If you have a powerful desktop GPU, the best workflow is:
 
@@ -189,7 +190,7 @@ If you have a powerful desktop GPU, the best workflow is:
 
 This keeps Kaggle runtime within the 8-hour limits while still using big models.
 
-⚠ Constraints & Notes
+# ⚠ Constraints & Notes
 
 Kaggle text fields may be stored as stringified lists — parsing is handled in src/data.py.
 
@@ -197,15 +198,10 @@ This repository targets probability quality (LogLoss), not accuracy.
 
 Codespaces is often CPU-only; Transformer training is best on Kaggle GPU or your desktop GPU.
 
-👤 Author
+# 👤 Author
 
 Chirag Desai
 Building reproducible ML systems, Kaggle-ready pipelines, and production-style ML engineering workflows.
 
-⭐ If this repository helps you, consider starring it.
+### ⭐ If this repository helps you, consider starring it.
 
-If you want, I can also generate a matching **docs/** section (like your architecture diagram style) for:
-- “data flow diagram”
-- “training/inference lifecycle”
-- “K-fold ensemble plan”
-but the above already matches your “single-cell beautiful README” style exactly.
