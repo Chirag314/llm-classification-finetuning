@@ -6,7 +6,7 @@ from tqdm import tqdm
 import torch
 import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
-from transformers import AutoTokenizer
+from transformers import DebertaV2Tokenizer
 
 from .config import load_cfg, ensure_dirs
 from .data import load_test, make_input_text, swap_row, LABELS
@@ -53,7 +53,7 @@ def main(cfg_path: str):
     ckpt_path = Path(cfg.output_dir) / f"fold{cfg.fold}_best.pt"
     ckpt = torch.load(ckpt_path, map_location="cpu")
 
-    tokenizer = AutoTokenizer.from_pretrained(ckpt["tokenizer"], use_fast=True)
+    tokenizer = DebertaV2Tokenizer.from_pretrained(ckpt["tokenizer"])
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = CrossEncoderClassifier(ckpt["model_name"]).to(device)

@@ -12,7 +12,7 @@ from torch.utils.data import Dataset, DataLoader
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import log_loss
 
-from transformers import AutoTokenizer, get_cosine_schedule_with_warmup
+from transformers import DebertaV2Tokenizer, get_cosine_schedule_with_warmup
 
 from .config import load_cfg, ensure_dirs
 from .data import load_train, make_input_text, swap_row, LABELS
@@ -90,7 +90,7 @@ def main(cfg_path: str):
     df_tr = df_aug.iloc[tr_idx].reset_index(drop=True)
     df_va = df_aug.iloc[va_idx].reset_index(drop=True)
 
-    tokenizer = AutoTokenizer.from_pretrained(cfg.model_name, use_fast=True)
+    tokenizer = DebertaV2Tokenizer.from_pretrained(cfg.model_name)
     ds_tr = PrefDataset(df_tr, tokenizer, cfg.max_length)
     ds_va = PrefDataset(df_va, tokenizer, cfg.max_length)
 

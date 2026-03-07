@@ -196,7 +196,6 @@ Kaggle text fields may be stored as stringified lists — parsing is handled in 
 
 This repository targets probability quality (LogLoss), not accuracy.
 
-Codespaces is often CPU-only; Transformer training is best on Kaggle GPU or your desktop GPU.
 
 # 👤 Author
 
